@@ -3,6 +3,10 @@
 Add a cool full-screen reside menu to your react-native application. 
 Implemented using pure JavaScript. Uses NativeDriver for better performance.
 
+This JS implementation is taken from 
+Android - [AndroidResideMenu](https://github.com/SpecialCyCi/AndroidResideMenu)
+iOS - [iOS REsideMenu](https://github.com/romaonthego/RESideMenu)
+
 ## Installation
 `npm i -S react-native-reside-menu`
 
