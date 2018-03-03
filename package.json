@@ -1,6 +1,6 @@
 {
   "name": "react-native-reside-menu",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Add a cool reside menu to your react-native application. ",
   "main": "index.js",
   "scripts": {
