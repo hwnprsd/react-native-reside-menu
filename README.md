@@ -37,7 +37,7 @@ export  default  class  App  extends  Component {
 ## Props
 | Props | description| type |isRequired  |defaultValue |
 |--|--|--|--|--|
-| VisibleComponent | The top component in the reside menu (two layer) stack | React Component | true | N/A  |
-| HiddenComponent | The bottom component in the reside menu (two layer) stack. Hidden by the top layer before action.  | React Component | true | N/A  |
+| VisibleComponent | The top component in the reside menu (two layer) stack | React Component | true | () =>  <View style={{ flex: 1,backgroundColor: '#444' }}  />  |
+| HiddenComponent | The bottom component in the reside menu (two layer) stack. Hidden by the top layer before action.  | React Component | true | () =>  <View style={{ flex: 1, backgroundColor: '#eee' }}  />  |
 | xCoord | A number which dictates how far away the reside menu is pushed, on the X Axis | number | false | 300 dp |
-| onResideStateChange | call back to when the state changes. -1, 0, 1 for left center and right | function | false | N/A |
+| onResideStateChange | call back to when the state changes. -1, 0, 1 for left center and right | function | false | null |

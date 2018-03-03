@@ -31,5 +31,8 @@
   "homepage": "https://github.com/d3fkon/react-native-reside-menu#readme",
   "devDependencies": {
     "babel-preset-react-native": "^4.0.0"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.1"
   }
 }

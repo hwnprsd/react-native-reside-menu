@@ -6,6 +6,8 @@ import {
   Dimensions,
   Easing,
 } from 'react-native';
+import PropTypes from 'prop-types';
+
 
 export default class ResideMenu extends Component {
   state = {
@@ -40,7 +42,7 @@ export default class ResideMenu extends Component {
         }
       ]
     }
-    
+
     return (
       <View style={style}>
         <this.props.HiddenComponent />
@@ -71,17 +73,17 @@ export default class ResideMenu extends Component {
         return this.xCoord;
     }
     if (v < 0) {
-      if (x < this.xCoord*(-1))
-        return this.xCoord*(-1);
+      if (x < this.xCoord * (-1))
+        return this.xCoord * (-1);
       if (x < 0)
-        return this.xCoord*(-1);
+        return this.xCoord * (-1);
       if (x > 0)
         return 0
     }
     if (v === 0) {
       if (this.state.resideState === 0) {
         if (g > 170)
-          return this.xCoord*(-1);
+          return this.xCoord * (-1);
         else
           return this.xCoord
       }
@@ -129,7 +131,7 @@ export default class ResideMenu extends Component {
         ]).start()
         this.animatedValue.flattenOffset();
         if (this.props.onResideStateChange)
-          this.props.onResideStateChange(this._stateHelper(parseInt(this.state.animatedValueX), parseFloat(gestureState.vx), parseFloat(gestureState.x0))/(this.props.xCoord || 300))
+          this.props.onResideStateChange(this._stateHelper(parseInt(this.state.animatedValueX), parseFloat(gestureState.vx), parseFloat(gestureState.x0)) / (this.props.xCoord || 300))
       },
       onPanResponderTerminate: (evt, gestureState) => {
       },
@@ -144,4 +146,18 @@ export default class ResideMenu extends Component {
     Dimensions.removeEventListener("change", this.handler);
     this.animatedValue.x.removeAllListeners();
   }
+}
+
+ResideMenu.propTypes = {
+  HiddenComponent: PropTypes.element.isRequired,
+  VisibleComponent: PropTypes.element.isRequired,
+  onResideStateChange: PropTypes.func,
+  xCoord: PropTypes.number
+}
+
+ResideMenu.defaultProps = {
+  VisibleComponent: () => < View style={{ flex: 1, backgroundColor: '#444' }} />,
+  HiddenComponent: () => <View style={{ flex: 1, backgroundColor: '#eee' }} />,
+  onResideStateChange: null,
+  xCoord: 300
 }
