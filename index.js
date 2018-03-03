@@ -148,8 +148,8 @@ export default class ResideMenu extends Component {
 }
 
 ResideMenu.propTypes = {
-  HiddenComponent: PropTypes.oneOfType[PropTypes.func, PropTypes.element],
-  VisibleComponent: PropTypes.oneOfType[PropTypes.func, PropTypes.element],
+  HiddenComponent: PropTypes.oneOfType([PropTypes.func, PropTypes.element]),
+  VisibleComponent: PropTypes.oneOfType([PropTypes.func, PropTypes.element]),
   onResideStateChange: PropTypes.func,
   xCoord: PropTypes.number
 }

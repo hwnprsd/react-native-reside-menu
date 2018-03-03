@@ -24,7 +24,7 @@ export  default  class  App  extends  Component {
 		return (
 			<ResideMenu
 				onResideStateChange={(s) => { console.log(s) }}
-				VisibleComponent={<vc />} 								 
+				VisibleComponent={() =>  <View style={{ flex: 1, backgroundColor: '#eee' }}  />} 								 
 				HiddenComponent={() =>  <View style={{ flex: 1, backgroundColor: '#eee' }}  />}
 			/>
 
