@@ -14,7 +14,6 @@ export default class ResideMenu extends Component {
     animatedValueX: 0,
     animatedVelocity: 0,
     resideState: 0,
-    xResideState: -300,
     height: Dimensions.get("window").height,
     width: Dimensions.get("window").width,
   }
@@ -63,26 +62,27 @@ export default class ResideMenu extends Component {
     }).start()
   }
   xCoord = this.props.xCoord || 300;
-  _helper = (x, v, g) => {
-    if (v > 0) {
-      if (x > this.xCoord)
+  _helper = (animatedX, xVelocity, xTouchLocation) => {
+    const CENTER = 170;
+    if (xVelocity > 0) {
+      if (animatedX > this.xCoord)
         return this.xCoord;
-      if (x < 0)
+      if (animatedX < 0)
         return 0;
-      if (x > 0)
+      if (animatedX > 0)
         return this.xCoord;
     }
-    if (v < 0) {
-      if (x < this.xCoord * (-1))
+    if (xVelocity < 0) {
+      if (animatedX < this.xCoord * (-1))
         return this.xCoord * (-1);
-      if (x < 0)
+      if (animatedX < 0)
         return this.xCoord * (-1);
-      if (x > 0)
+      if (animatedX > 0)
         return 0
     }
-    if (v === 0) {
+    if (xVelocity === 0) {
       if (this.state.resideState === 0) {
-        if (g > 170)
+        if (xTouchLocation > CENTER)
           return this.xCoord * (-1);
         else
           return this.xCoord
@@ -92,10 +92,9 @@ export default class ResideMenu extends Component {
     }
     return 0;
   }
-  _stateHelper = (x, v, g) => {
-    let resideState = this._helper(x, v, g);
+  _stateHelper = (animatedX, xVelocity, xTouchLocation) => {
+    let resideState = this._helper(animatedX, xVelocity, xTouchLocation);
     this.setState({
-      xResideState: this.state.resideState,
       resideState
     });
     return resideState;
@@ -149,15 +148,13 @@ export default class ResideMenu extends Component {
 }
 
 ResideMenu.propTypes = {
-  HiddenComponent: PropTypes.element.isRequired,
-  VisibleComponent: PropTypes.element.isRequired,
+  HiddenComponent: PropTypes.oneOfType[PropTypes.func, PropTypes.element],
+  VisibleComponent: PropTypes.oneOfType[PropTypes.func, PropTypes.element],
   onResideStateChange: PropTypes.func,
   xCoord: PropTypes.number
 }
 
 ResideMenu.defaultProps = {
-  VisibleComponent: () => < View style={{ flex: 1, backgroundColor: '#444' }} />,
-  HiddenComponent: () => <View style={{ flex: 1, backgroundColor: '#eee' }} />,
   onResideStateChange: null,
   xCoord: 300
 }

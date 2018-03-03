@@ -18,13 +18,13 @@ iOS - [iOS REsideMenu](https://github.com/romaonthego/RESideMenu)
 import  React, { Component } from  'react';
 import  ResideMenu  from  'react-native-reside-menu';
 import { View } from  'react-native';
-
+const vc = () =>  <View style={{ flex: 1,backgroundColor: '#444' }}  />
 export  default  class  App  extends  Component {
 	render() {
 		return (
 			<ResideMenu
 				onResideStateChange={(s) => { console.log(s) }}
-				VisibleComponent={() =>  <View style={{ flex: 1,backgroundColor: '#444' }}  />} 								 
+				VisibleComponent={<vc />} 								 
 				HiddenComponent={() =>  <View style={{ flex: 1, backgroundColor: '#eee' }}  />}
 			/>
 
@@ -37,7 +37,7 @@ export  default  class  App  extends  Component {
 ## Props
 | Props | description| type |isRequired  |defaultValue |
 |--|--|--|--|--|
-| VisibleComponent | The top component in the reside menu (two layer) stack | React Component | true | () =>  <View style={{ flex: 1,backgroundColor: '#444' }}  />  |
-| HiddenComponent | The bottom component in the reside menu (two layer) stack. Hidden by the top layer before action.  | React Component | true | () =>  <View style={{ flex: 1, backgroundColor: '#eee' }}  />  |
+| VisibleComponent | The top component in the reside menu (two layer) stack |  React Element | true | null  |
+| HiddenComponent | The bottom component in the reside menu (two layer) stack. Hidden by the top layer before action.  | React Element | true | null  |
 | xCoord | A number which dictates how far away the reside menu is pushed, on the X Axis | number | false | 300 dp |
 | onResideStateChange | call back to when the state changes. -1, 0, 1 for left center and right | function | false | null |
